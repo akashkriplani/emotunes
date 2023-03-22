@@ -1,7 +1,12 @@
 import { FC } from 'react';
+import Header from './components/Header';
 
 const App: FC = () => {
-  return <h1 className="text-3xl font-bold">App works!</h1>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 };
 
 export default App;
