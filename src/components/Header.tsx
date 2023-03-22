@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 const Header: FC = () => {
   return (
-    <header className="bg-black text-white pt-6 md:py-6">
+    <header className="bg-black text-white pt-6 md:py-4">
       <div className="container md:flex md:items-center md:justify-between mx-auto px-4">
         <h1 className="mb-4 md:mb-0 text-2xl">Emotunes</h1>
         <ul className="md:flex md:items-center list-reset text-xl">
