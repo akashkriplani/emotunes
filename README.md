@@ -98,5 +98,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Usage
 
 To use the application, simply open it in a web browser and allow access to your device's camera. The application will use face detection and recognition to analyze your facial features and detect your emotions in real-time.
-
-For more information on how to use the application, see the [documentation](https://github.com/emotunes)
