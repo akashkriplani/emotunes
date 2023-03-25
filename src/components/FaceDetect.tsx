@@ -1,8 +1,9 @@
 import * as faceapi from 'face-api.js';
 import { useEffect, useState } from 'react';
 import P5 from 'p5';
-import { IFaceExpressions, IFaceExpressionsDetection } from '../interfaces/Faces';
+import { IFaceExpressions, IFaceExpressionsDetection, IMultiFaces } from '../interfaces/Faces';
 import Sketch from 'react-p5';
+import { Mood } from '../utils';
 
 // Get face API model URL
 const MODEL_URL = '/models';
@@ -121,6 +122,8 @@ const FaceDetect = ({ onCanvasClick }) => {
           stopDraw = true;
         }
 
+        const multiFaceExpressions: IMultiFaces[] = [];
+
         const result = drawFaces.map((drawing: IFaceExpressionsDetection) => {
           if (drawing) {
             const getExpressions: IFaceExpressions = drawing.expressions;
@@ -136,7 +139,9 @@ const FaceDetect = ({ onCanvasClick }) => {
               return getExpressions[key] === max;
             })[0];
 
-            emotion = expression_value;
+            multiFaceExpressions.push({ emotion: expression_value as Mood, value: max });
+
+            emotion = getBestEmotion(multiFaceExpressions);
           }
           return {
             mood: emotion
@@ -150,6 +155,20 @@ const FaceDetect = ({ onCanvasClick }) => {
         }
       }
     }
+  };
+
+  // If there are multiple faces detected, it takes out the best emotion in them and compares it.
+  // The higher the value of the emotion of a face, that emotion will be passed to the music search query.
+  const getBestEmotion = (faces: IMultiFaces[]) => {
+    return (faces || []).map((face) => {
+      let max = 0,
+        emotion = '';
+      if (max < face.value) {
+        max = face.value;
+        emotion = face.emotion;
+      }
+      return emotion;
+    })[0];
   };
 
   const handleRedraw = () => {
