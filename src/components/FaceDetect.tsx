@@ -186,7 +186,7 @@ const FaceDetect = ({ onCanvasClick }) => {
   }, [mood, noFace]);
 
   return (
-    <div className="flex items-center flex-col justify-items-start px-8 py-8">
+    <div className="flex items-start flex-col justify-items-start px-8 py-8">
       <h2 className="text-2xl px-4 py-4">Click anywhere on the video to capture your mood</h2>
       <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
       {(mood || noFace) && (
