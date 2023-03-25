@@ -1,5 +1,6 @@
 {
   "name": "emotunes",
+  "homepage": "https://akashkriplani.github.io/emotunes",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
