@@ -6,7 +6,7 @@ import Sketch from 'react-p5';
 import { Mood } from '../utils';
 
 // Get face API model URL
-const MODEL_URL = '/models';
+const MODEL_URL = process.env.PUBLIC_URL + '/models';
 
 const FaceDetect = ({ onCanvasClick }) => {
   const [mood, setMood] = useState('');
