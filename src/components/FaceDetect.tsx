@@ -110,40 +110,44 @@ const FaceDetect = ({ onCanvasClick }) => {
   };
 
   const mouseClicked = (P5: any) => {
-    if (!emotion) {
-      // Stop the draw
-      if (P5.isLooping()) {
-        P5.noLoop();
-        captureImage.remove();
-        stopDraw = true;
-      }
-
-      const result = drawFaces.map((drawing: IFaceExpressionsDetection) => {
-        if (drawing) {
-          const getExpressions: IFaceExpressions = drawing.expressions;
-
-          const expressions = Object.keys(getExpressions).map((key) => {
-            const value = getExpressions[key] as number;
-            return value;
-          });
-
-          const max = Math.max(...expressions);
-
-          const expression_value = Object.keys(getExpressions).filter((key) => {
-            return getExpressions[key] === max;
-          })[0];
-
-          emotion = expression_value;
+    const { mouseX, mouseY, width, height } = P5;
+    // Check if the mouse click happens inside the canvas
+    if (mouseX <= width && mouseX >= 0 && mouseY <= height && mouseY >= 0) {
+      if (!emotion) {
+        // Stop the draw
+        if (P5.isLooping()) {
+          P5.noLoop();
+          captureImage.remove();
+          stopDraw = true;
         }
-        return {
-          mood: emotion
-        };
-      });
-      if (result && result.length > 0) {
-        setMood(result[0].mood);
-        onCanvasClick(result[0].mood);
-      } else {
-        setNoFace(true);
+
+        const result = drawFaces.map((drawing: IFaceExpressionsDetection) => {
+          if (drawing) {
+            const getExpressions: IFaceExpressions = drawing.expressions;
+
+            const expressions = Object.keys(getExpressions).map((key) => {
+              const value = getExpressions[key] as number;
+              return value;
+            });
+
+            const max = Math.max(...expressions);
+
+            const expression_value = Object.keys(getExpressions).filter((key) => {
+              return getExpressions[key] === max;
+            })[0];
+
+            emotion = expression_value;
+          }
+          return {
+            mood: emotion
+          };
+        });
+        if (result && result.length > 0) {
+          setMood(result[0].mood);
+          onCanvasClick(result[0].mood);
+        } else {
+          setNoFace(true);
+        }
       }
     }
   };
