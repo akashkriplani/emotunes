@@ -7,8 +7,9 @@ import Sketch from 'react-p5';
 // Get face API model URL
 const MODEL_URL = '/models';
 
-const FaceDetect = () => {
+const FaceDetect = ({ onCanvasClick }) => {
   const [mood, setMood] = useState('');
+  const [noFace, setNoFace] = useState(false);
 
   // Save current camera image
   let captureImage: P5.Element;
@@ -120,7 +121,6 @@ const FaceDetect = () => {
       const result = drawFaces.map((drawing: IFaceExpressionsDetection) => {
         if (drawing) {
           const getExpressions: IFaceExpressions = drawing.expressions;
-          console.log(getExpressions);
 
           const expressions = Object.keys(getExpressions).map((key) => {
             const value = getExpressions[key] as number;
@@ -140,22 +140,40 @@ const FaceDetect = () => {
         };
       });
       if (result && result.length > 0) {
-        console.log(result);
         setMood(result[0].mood);
+        onCanvasClick(result[0].mood);
+      } else {
+        setNoFace(true);
       }
     }
+  };
+
+  const handleRedraw = () => {
+    // TODO: Need to add a better functionality rather than re-loading the whole page
+    window.location.reload();
   };
 
   useEffect(() => {
     if (mood) {
       console.log(mood);
+    } else if (noFace && !mood) {
+      // TODO: Handle error scenario while mood is not detected
+      window.alert('Mood not detected');
     }
-  }, [mood]);
+  }, [mood, noFace]);
 
   return (
-    <div className="flex items-center flex-col justify-items-start px-4 py-4">
-      <h2 className="text-2xl p-4">Click anywhere on the video to capture your mood</h2>
+    <div className="flex items-center flex-col justify-items-start px-8 py-8">
+      <h2 className="text-2xl px-4 py-4">Click anywhere on the video to capture your mood</h2>
       <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
+      {(mood || noFace) && (
+        <button
+          onClick={() => handleRedraw()}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        >
+          Retake
+        </button>
+      )}
     </div>
   );
 };
