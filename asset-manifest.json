@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/emotunes/static/css/main.e4cde3f7.css",
-    "main.js": "/emotunes/static/js/main.6d57e035.js",
+    "main.js": "/emotunes/static/js/main.17d7ad60.js",
     "static/media/loading.svg": "/emotunes/static/media/loading.70f96f6339079d7cd12f1ef7445ff2b7.svg",
     "index.html": "/emotunes/index.html",
     "main.e4cde3f7.css.map": "/emotunes/static/css/main.e4cde3f7.css.map",
-    "main.6d57e035.js.map": "/emotunes/static/js/main.6d57e035.js.map"
+    "main.17d7ad60.js.map": "/emotunes/static/js/main.17d7ad60.js.map"
   },
   "entrypoints": [
     "static/css/main.e4cde3f7.css",
-    "static/js/main.6d57e035.js"
+    "static/js/main.17d7ad60.js"
   ]
 }
