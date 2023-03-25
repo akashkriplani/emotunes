@@ -7,13 +7,13 @@ const Header: FC = () => {
         <h1 className="mb-4 md:mb-0 text-2xl">Emotunes</h1>
         <ul className="md:flex md:items-center list-reset text-xl">
           <li className="border-t md:border-0 md:ml-4">
-            <a className="block md:inline no-underline py-4 md:py-0 text-white hover:text-gray-300" href="/">
-              Theme
-            </a>
-          </li>
-          <li className="border-t md:border-0 md:ml-4">
-            <a className="block md:inline no-underline py-4 md:py-0 text-white hover:text-gray-300" href="/">
-              Collaborators
+            <a
+              className="block md:inline no-underline py-4 md:py-0 text-white hover:text-gray-300"
+              href="https://github.com/akashkriplani/emotunes"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub Repo
             </a>
           </li>
         </ul>
