@@ -90,6 +90,7 @@ If you want to contribute to Emotunes, feel free to fork the repository and subm
 
 - [Akash Kriplani](https://github.com/akashkriplani)
 - [Saurav Dubey](https://github.com/sauravn10)
+- [Saurabh Ghosh](https://github.com/kooldandy)
 
 ## License
 
