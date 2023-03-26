@@ -38,7 +38,7 @@ const App: FC = () => {
       <Header />
       <div className={`flex justify-start flex-row ${videos.length > 0 ? 'items-start' : 'items-center'}`}>
         <FaceDetect onCanvasClick={(mood: Mood) => handleCanvasClick(mood)} />
-        {loader && <Loading title="Loading tracks..." />}
+        {loader && <Loading title="Generating playlist..." />}
         {videos.length > 0 && (
           <div className="flex flex-col">
             {searchQuery && videos && videos.length > 0 && (

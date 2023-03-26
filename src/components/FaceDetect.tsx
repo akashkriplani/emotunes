@@ -178,7 +178,7 @@ const FaceDetect = ({ onCanvasClick }) => {
 
   useEffect(() => {
     if (mood) {
-      console.log(mood);
+      // DO other tasks.
     } else if (noFace && !mood) {
       // TODO: Handle error scenario while mood is not detected
       window.alert('Mood not detected');
@@ -189,6 +189,13 @@ const FaceDetect = ({ onCanvasClick }) => {
     <div className="flex items-start flex-col justify-items-start px-8 py-8">
       <h2 className="text-2xl px-4 py-4">Click anywhere on the video to capture your mood</h2>
       <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
+      {mood && (
+        <div className="py-2">
+          <p className="text-2xl">
+            Seems like you're <strong>{mood}</strong> today.
+          </p>
+        </div>
+      )}
       {(mood || noFace) && (
         <button
           onClick={() => handleRedraw()}
