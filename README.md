@@ -26,7 +26,7 @@ The following dependencies are required to build and run the application:
 
 - [p5.js](https://p5js.org/): A JavaScript library for creative coding, which provides a range of functions and tools for creating interactive graphics and animations.
 
-- [react-p5](https://github.com/and-who/react-p5): A React wrapper for p5.js, which provides a simple way to integrate p5.js sketches into a React application.
+- [react-p5](https://www.npmjs.com/package/react-p5): A React wrapper for p5.js, which provides a simple way to integrate p5.js sketches into a React application.
 
 - [gh-pages](https://github.com/tschaub/gh-pages): A tool for publishing a static website to a GitHub Pages repository, which provides a simple way to host and share your application online.
 
